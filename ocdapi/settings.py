@@ -13,7 +13,7 @@ def envvar(name, default=None):
 SECRET_KEY = envvar('SECRET_KEY', 'ITSASECRET')
 RAVEN_DSN = envvar('RAVEN_DSN', '')
 ALLOWED_HOSTS = envvar('ALLOWED_HOSTS', '*').split(',')
-DATABASES = {'default': dj_database_url.config(default='postgis://opencivicdata:test@10.42.2.101/opencivicdata')}
+DATABASES = {'default': dj_database_url.config(default='postgis://eric:@localhost/opencivicdata')}
 ELASTICSEARCH_HOST = envvar('ELASTICSEARCH_HOST', 'http://localhost:9200')
 TEMPLATE_DEBUG = DEBUG = envvar('DJANGO_DEBUG', 'False').lower() == 'true'
 USE_LOCKSMITH = envvar('USE_LOCKSMITH', 'false').lower() == 'true'
@@ -108,8 +108,8 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['mail_admins'],
-            'level': 'ERROR',
+            'handlers': ['console'],
+            'level': 'DEBUG',
             'propagate': True,
         },
         'boundaries': {
@@ -131,6 +131,10 @@ if USE_LOCKSMITH:
 BOUNDARIES_SHAPEFILES_DIR = 'shapefiles'
 IMAGO_COUNTRY = 'us'
 IMAGO_BOUNDARY_MAPPINGS = {
+    'nyc-council-districts': {'key': 'CounDist',
+                              'prefix': 'council_district-',
+                              'ignore': None,
+                             },
     'county-14': {'key': 'census_geoid',
                   'start': datetime.date(2014,1,1),
                   'prefix': 'county-',
