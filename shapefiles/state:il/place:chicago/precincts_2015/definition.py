@@ -9,7 +9,7 @@ def precinct_namer(feature):
 boundaries.register('chicago-precincts-2015',  
     file='',
     last_updated=date(2015, 4, 2),
-    name='Chicago Precincts',
+    name='Chicago Precincts 2015',
     singular='Chicago Precinct',
     domain='Chicago',
     authority='City of Chicago',
