@@ -2,6 +2,14 @@ from datetime import date
 
 import boundaries
 
+def ocd_id_func(feature):
+    division = 'ocd-division/country:us/state:mn/place:st_paul'
+    precinct_id = feature.get('Precinct')
+    ward, precinct = precinct_id[13], precinct_id[17:]
+    return '{0}/ward:{1}/precinct:{2}'.format(division,
+                                              ward, 
+                                              precinct)
+
 boundaries.register('st-paul-precincts',  
     file='',
     last_updated=date(2015, 9, 15),

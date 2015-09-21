@@ -2,6 +2,9 @@ from datetime import date
 
 import boundaries
 
+def ocd_id_func(feature):
+    return 'ocd-division/country:us/state:il/place:chicago/ward:{0}'.format(feature.get('WARD'))
+
 boundaries.register('chicago-wards-2015',  
     file='',
     last_updated=date(2015, 9, 15),
@@ -15,7 +18,7 @@ boundaries.register('chicago-wards-2015',
     end_date=None,
     notes='',
     name_func=boundaries.attr('WARD'),
-    id_func=boundaries.attr('WARD'),
+    id_func=ocd_id_func,
     is_valid_func=lambda feature: True,
     label_point_func=lambda feature: None,
 )

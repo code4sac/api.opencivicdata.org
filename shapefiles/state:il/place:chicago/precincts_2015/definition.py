@@ -6,6 +6,12 @@ def precinct_namer(feature):
     return 'ward-{0}-precinct-{1}'.format(str(feature.get('WARD')), 
                                           str(feature.get('PRECINCT')))
 
+def ocd_id_func(feature):
+    division = 'ocd-division/country:us/state:il/place:chicago'
+    return '{0}/ward:{1}/precinct:{2}'.format(division,
+                                              str(feature.get('WARD')), 
+                                              str(feature.get('PRECINCT')))
+
 boundaries.register('chicago-precincts-2015',  
     file='',
     last_updated=date(2015, 4, 2),
@@ -19,7 +25,7 @@ boundaries.register('chicago-precincts-2015',
     end_date=None,
     notes='',
     name_func=precinct_namer,
-    id_func=boundaries.attr('PRECINCT'),
+    id_func=ocd_id_func,
     is_valid_func=lambda feature: True,
     label_point_func=lambda feature: None,
 )
