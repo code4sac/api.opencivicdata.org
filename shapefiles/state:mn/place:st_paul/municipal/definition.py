@@ -2,6 +2,10 @@ from datetime import date
 
 import boundaries
 
+def ocd_division(feature):
+    division = 'ocd-division/country:us/state:mn/place:st_paul'
+    return division
+
 boundaries.register('st-paul-municipal',  
     file='',
     last_updated=date(2015, 9, 15),
@@ -15,7 +19,7 @@ boundaries.register('st-paul-municipal',
     end_date=None,
     notes='',
     name_func=boundaries.attr('NAME'),
-    id_func=boundaries.attr('NAME'),
+    id_func=ocd_division,
     is_valid_func=lambda feature: True,
     label_point_func=lambda feature: None,
 )

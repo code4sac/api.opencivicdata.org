@@ -10,6 +10,10 @@ def ocd_id_func(feature):
                                               ward, 
                                               precinct)
 
+def precinct_namer(feature):
+    ward, precinct = feature.get('Precinct')[13], feature.get('Precinct')[17:]
+    return 'Ward {0}, Precinct {1}'.format(ward, precinct)
+
 boundaries.register('st-paul-precincts',  
     file='',
     last_updated=date(2015, 9, 15),
@@ -22,8 +26,8 @@ boundaries.register('st-paul-precincts',
     start_date=date(2015,5,1),
     end_date=None,
     notes='',
-    name_func=boundaries.attr('Precinct'),
-    id_func=boundaries.attr('PrecinctID'),
+    name_func=precinct_namer,
+    id_func=ocd_id_func,
     is_valid_func=lambda feature: True,
     label_point_func=lambda feature: None,
 )

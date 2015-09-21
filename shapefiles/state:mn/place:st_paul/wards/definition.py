@@ -4,8 +4,13 @@ import boundaries
 
 def ocd_id_func(feature):
     division = 'ocd-division/country:us/state:mn/place:st_paul'
+    ward_number = feature.get('WARD').split('-')[1]
     return '{0}/ward:{1}'.format(division,
-                                 feature.get('WARD'))
+                                 ward_number)
+
+def ward_namer(feature):
+    ward_number = feature.get('WARD').split('-')[1]
+    return 'Ward {0}'.format(ward_number)
 
 boundaries.register('st-paul-wards',  
     file='',
@@ -19,7 +24,7 @@ boundaries.register('st-paul-wards',
     start_date=date(2015,5,1),
     end_date=None,
     notes='',
-    name_func=boundaries.attr('WARD'),
+    name_func=ward_namer,
     id_func=ocd_id_func,
     is_valid_func=lambda feature: True,
     label_point_func=lambda feature: None,
