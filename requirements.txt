@@ -8,11 +8,11 @@ dj-database-url
 opencivicdata-divisions
 DjangoRestless
 
--e git://github.com/opencivicdata/pupa.git#egg=pupa
+-e git+https://github.com/opencivicdata/pupa.git#egg=pupa
 
 # represent-boundaries
 -e git+https://github.com/opennorth/represent-boundaries.git#egg=boundaries
 
--e git://github.com/sunlightlabs/django-locksmith.git@python3#egg=django-locksmith
+-e git+https://github.com/sunlightlabs/django-locksmith.git@python3#egg=django-locksmith
 
--e git://github.com/sunlightlabs/waterfall.git#egg=waterfall
+-e git+https://github.com/sunlightlabs/waterfall.git#egg=waterfall
