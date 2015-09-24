@@ -5,6 +5,9 @@ import boundaries
 def ocd_id_func(feature):
     return 'ocd-division/country:us/state:il/place:chicago/ward:{0}'.format(feature.get('WARD'))
 
+def ward_namer(feature):
+    return 'ward-{0}'.format(feature.get('WARD'))
+
 boundaries.register('chicago-wards-2015',  
     file='',
     last_updated=date(2015, 9, 15),
@@ -17,7 +20,7 @@ boundaries.register('chicago-wards-2015',
     start_date=date(2015,5,1),
     end_date=None,
     notes='',
-    name_func=boundaries.attr('WARD'),
+    name_func=ward_namer,
     id_func=ocd_id_func,
     is_valid_func=lambda feature: True,
     label_point_func=lambda feature: None,
