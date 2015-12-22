@@ -10,7 +10,7 @@ def ocd_id_func(feature):
 
 def ward_namer(feature):
     ward_number = feature.get('WARD').split('-')[1]
-    return 'Ward {0}'.format(ward_number)
+    return 'st-paul-ward-{0}'.format(ward_number)
 
 boundaries.register('st-paul-wards',  
     file='',

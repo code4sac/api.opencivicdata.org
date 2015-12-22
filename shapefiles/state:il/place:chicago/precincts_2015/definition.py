@@ -3,7 +3,7 @@ from datetime import date
 import boundaries
 
 def precinct_namer(feature):
-    return 'ward-{0}-precinct-{1}'.format(str(feature.get('WARD')), 
+    return 'chicago-ward-{0}-precinct-{1}'.format(str(feature.get('WARD')), 
                                           str(feature.get('PRECINCT')))
 
 def ocd_id_func(feature):

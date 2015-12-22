@@ -2,6 +2,9 @@ from datetime import date
 
 import boundaries
 
+def namer(feature):
+    return 'city-of-new-york'
+
 boundaries.register('new-york-municipal',  
     file='',
     last_updated=date(2015, 9, 15),
@@ -14,7 +17,7 @@ boundaries.register('new-york-municipal',
     start_date=None,
     end_date=None,
     notes='',
-    name_func=boundaries.attr('NAME'),
+    name_func=namer,
     id_func=boundaries.attr('NAME'),
     is_valid_func=lambda feature: True,
     label_point_func=lambda feature: None,

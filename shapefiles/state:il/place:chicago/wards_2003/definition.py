@@ -10,6 +10,9 @@ def valid_ward(feature):
 def ocd_id_func(feature):
     return 'ocd-division/country:us/state:il/place:chicago/ward:{0}'.format(feature.get('WARD'))
 
+def ward_namer(feature):
+    return 'chicago-ward-{0}'.format(feature.get('WARD'))
+
 boundaries.register('chicago-wards-2003',  
     file='',
     last_updated=date(2015, 4, 2),
@@ -22,7 +25,7 @@ boundaries.register('chicago-wards-2003',
     start_date=date(2003,5,1),
     end_date=date(2015,4,30),
     notes='',
-    name_func=boundaries.attr('WARD'),
+    name_func=ward_namer,
     id_func=ocd_id_func,
     is_valid_func=valid_ward,
     label_point_func=lambda feature: None,

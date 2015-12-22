@@ -6,7 +6,7 @@ def ocd_id_func(feature):
     return 'ocd-division/country:us/state:il/place:chicago/ward:{0}'.format(feature.get('WARD'))
 
 def ward_namer(feature):
-    return 'ward-{0}'.format(feature.get('WARD'))
+    return 'chicago-ward-{0}'.format(feature.get('WARD'))
 
 boundaries.register('chicago-wards-2015',  
     file='',

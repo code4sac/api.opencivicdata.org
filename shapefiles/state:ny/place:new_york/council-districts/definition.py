@@ -3,7 +3,7 @@ from datetime import date
 import boundaries
 
 def nyc_namer(feature):
-    return 'Council District {0}'.format(str(feature.get('CounDist')))
+    return 'new-york-council-district-{0}'.format(str(feature.get('CounDist')))
 
 def ocd_id_func(feature):
     division = 'ocd-division/country:us/state:ny/place:new_york'

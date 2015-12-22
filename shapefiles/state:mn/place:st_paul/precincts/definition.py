@@ -12,7 +12,7 @@ def ocd_id_func(feature):
 
 def precinct_namer(feature):
     ward, precinct = feature.get('Precinct')[13], feature.get('Precinct')[17:]
-    return 'Ward {0}, Precinct {1}'.format(ward, precinct)
+    return 'st-paul-ward-{0}-precinct-{1}'.format(ward, precinct)
 
 boundaries.register('st-paul-precincts',  
     file='',

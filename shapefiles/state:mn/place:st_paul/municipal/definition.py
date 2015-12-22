@@ -6,6 +6,9 @@ def ocd_division(feature):
     division = 'ocd-division/country:us/state:mn/place:st_paul'
     return division
 
+def namer(feature):
+    return 'city-of-st-paul'
+
 boundaries.register('st-paul-municipal',  
     file='',
     last_updated=date(2015, 9, 15),
@@ -18,7 +21,7 @@ boundaries.register('st-paul-municipal',
     start_date=date(2015,5,1),
     end_date=None,
     notes='',
-    name_func=boundaries.attr('NAME'),
+    name_func=namer,
     id_func=ocd_division,
     is_valid_func=lambda feature: True,
     label_point_func=lambda feature: None,
