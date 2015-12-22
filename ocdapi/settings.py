@@ -22,7 +22,8 @@ if USE_LOCKSMITH:
 
 
 # settings we don't override
-TIME_ZONE = 'America/New_York'
+#TIME_ZONE = 'America/New_York'
+#USE_TZ = True
 LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 USE_I18N = False
@@ -160,6 +161,14 @@ IMAGO_BOUNDARY_MAPPINGS = {
                       'ignore': None,
                      },
     'st-paul-precincts': {'key': 'placeholder_id',
+                          'prefix': '',
+                          'ignore': None,
+                         },
+    'illinois-lower-2011': {'key': 'placeholder_id',
+                          'prefix': '',
+                          'ignore': None,
+                         },
+    'illinois-upper-2011': {'key': 'placeholder_id',
                           'prefix': '',
                           'ignore': None,
                          },
