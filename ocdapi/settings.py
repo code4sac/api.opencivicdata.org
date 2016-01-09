@@ -29,9 +29,11 @@ SITE_ID = 1
 USE_I18N = False
 USE_L10N = False
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 MEDIA_ROOT = ''
 MEDIA_URL = ''
-STATIC_ROOT = ''
 STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
