@@ -6,7 +6,7 @@ def ocd_id_func(feature):
     return 'ocd-division/country:us/state:il/sldu:{0}'.format(feature.get('District_1'))
 
 def district_namer(feature):
-    return 'il-senate-district-{0}'.format(str(feature.get('District_1')).zfill(2))
+    return 'il-senate-district-{0}'.format(str(feature.get('District_1')).zfill(3))
 
 boundaries.register('illinois-upper-2011',  
     file='',
