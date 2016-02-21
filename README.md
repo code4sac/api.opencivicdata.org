@@ -5,6 +5,20 @@ Issues with the opencivicdata.org API should be filed at the [api.opencivicdata.
 
 All Open Civic Data issues can be browsed and filed at [the Open Civic Data JIRA instance](https://sunlight.atlassian.net/browse/OCD/).
 
+Usage
+-----
+
+Instructions assumes that you already have a database populated with scraped
+data.
+
+```
+mkvirtualenv ocdapi --python=`which python3`
+workon ocdapi
+# Edit ocdapi/settings.py DATABASES to point to your pupa db
+python manage.py migrate
+python manage.py runserver
+```
+
 What is this?
 -------------
 
