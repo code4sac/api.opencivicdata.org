@@ -8,6 +8,8 @@ dj-database-url
 opencivicdata-divisions
 DjangoRestless
 
+-e git+https://github.com/opencivicdata/imago@master#egg=imago
+
 -e git+https://github.com/opencivicdata/pupa.git#egg=pupa
 
 # represent-boundaries
