@@ -14,7 +14,7 @@ data.
 ```
 mkvirtualenv ocdapi --python=`which python3`
 workon ocdapi
-# Edit ocdapi/settings.py DATABASES to point to your pupa db
+export DATABASE_URL=postgis://my-user:@localhost/my-pupa-database
 python manage.py migrate
 python manage.py runserver
 ```
