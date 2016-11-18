@@ -3,10 +3,14 @@ from datetime import date
 import boundaries
 
 def sector_namer(feature):
+    print("Running sector_name")
+    print(feature.get("Sector"))
     return 'la-metro-committee-district-{0}'.format(feature.get('Sector'))
 
 def ocd_id_func(feature):
-    return 'ocd-division/country:us/state:ca/place:losangeles/ward:{0}'.format(feature.get('Sector'))
+    print("Running ocd_id_func")
+    print(feature.get("Sector"))
+    return 'ocd-division/country:us/state:ca/place:losangeles/district:{0}'.format(feature.get('Sector'))
 
 boundaries.register('la-metro-committee-districts',
     file='',
