@@ -13,7 +13,7 @@ def envvar(name, default=None):
 SECRET_KEY = envvar('SECRET_KEY', 'ITSASECRET')
 RAVEN_DSN = envvar('RAVEN_DSN', '')
 ALLOWED_HOSTS = envvar('ALLOWED_HOSTS', '*').split(',')
-DATABASES = {'default': dj_database_url.config(default='postgis://reginacompton:@localhost/opencivicdata')}
+DATABASES = {'default': dj_database_url.config(default='postgis://eric:@localhost/opencivicdata')}
 ELASTICSEARCH_HOST = envvar('ELASTICSEARCH_HOST', 'http://localhost:9200')
 TEMPLATE_DEBUG = DEBUG = envvar('DJANGO_DEBUG', 'False').lower() == 'true'
 USE_LOCKSMITH = envvar('USE_LOCKSMITH', 'false').lower() == 'true'
@@ -181,6 +181,3 @@ IMAGO_BOUNDARY_MAPPINGS = {
 }
 
 
-GDAL_LIBRARY_PATH = "/usr/local/lib/libgdal.dylib"
-import ctypes
-ctypes.CDLL(GDAL_LIBRARY_PATH)

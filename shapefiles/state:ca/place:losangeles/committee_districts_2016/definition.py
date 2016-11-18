@@ -3,13 +3,9 @@ from datetime import date
 import boundaries
 
 def sector_namer(feature):
-    print("Running sector_name")
-    print(feature.get("Sector"))
     return 'la-metro-committee-district-{0}'.format(feature.get('Sector'))
 
 def ocd_id_func(feature):
-    print("Running ocd_id_func")
-    print(feature.get("Sector"))
     return 'ocd-division/country:us/state:ca/place:losangeles/district:{0}'.format(feature.get('Sector'))
 
 boundaries.register('la-metro-committee-districts',
@@ -30,9 +26,3 @@ boundaries.register('la-metro-committee-districts',
     label_point_func=lambda feature: None,
 )
 
-
-boundaries.register('Federal electoral districts',
-    encoding='iso-8859-1',
-    last_updated=date(2011, 11, 28),
-    name_func=boundaries.clean_attr('FEDENAME'),
-)
