@@ -174,5 +174,10 @@ IMAGO_BOUNDARY_MAPPINGS = {
                           'prefix': '',
                           'ignore': None,
                          },
-
+    'la-metro-committee-districts': {'key': 'placeholder_id',
+                          'prefix': '',
+                          'ignore': None,
+                         },
 }
+
+
