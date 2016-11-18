@@ -6,11 +6,11 @@ def sector_namer(feature):
     return 'la-metro-committee-district-{0}'.format(feature.get('Sector'))
 
 def ocd_id_func(feature):
-    return 'ocd-division/country:us/state:ca/place:losangeles/district:{0}'.format(feature.get('Sector'))
+    return 'ocd-division/country:us/state:ca/county:los_angeles/council_district:{0}'.format(feature.get('Sector'))
 
 boundaries.register('la-metro-committee-districts',
     file='',
-    last_updated=date(2016, 11, 17),
+    last_updated=date(2016, 11, 18),
     name='LA Metro Committee Districts 2016',
     singular='LA Metro Committee District 2016',
     domain='Los Angeles County',
