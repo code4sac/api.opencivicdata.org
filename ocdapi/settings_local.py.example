@@ -1,0 +1,14 @@
+# SECURITY WARNING: add a secret on the production server, but do not add it here!
+SECRET_KEY = 'replacethiswithsomethingsecret'
+
+RAVEN_DSN = envvar('RAVEN_DSN', 'https://[public_key]:[secret_key]@app.getsentry.com/52777')
+
+DATABASES = {'default': {
+                 'ENGINE': '',
+                 'NAME': '',
+                 'USER': '',
+                 'PASSWORD': '',
+                 'HOST': '',
+                 'PORT': '',
+            }
+}

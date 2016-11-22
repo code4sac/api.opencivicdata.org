@@ -2,6 +2,9 @@ import os
 import datetime
 import dj_database_url
 from django.core.exceptions import ImproperlyConfigured
+from .local_settings import *
+
+DEBUG = True
 
 def envvar(name, default=None):
     result = os.environ.get(name, default)
@@ -10,15 +13,8 @@ def envvar(name, default=None):
     return result
 
 # env variables
-SECRET_KEY = envvar('SECRET_KEY', 'ITSASECRET')
-RAVEN_DSN = envvar('RAVEN_DSN', '')
 ALLOWED_HOSTS = envvar('ALLOWED_HOSTS', '*').split(',')
-DATABASES = {'default': dj_database_url.config(default='postgis://reginacompton:@localhost/opencivicdata')}
-ELASTICSEARCH_HOST = envvar('ELASTICSEARCH_HOST', 'http://localhost:9200')
 TEMPLATE_DEBUG = DEBUG = envvar('DJANGO_DEBUG', 'False').lower() == 'true'
-USE_LOCKSMITH = envvar('USE_LOCKSMITH', 'false').lower() == 'true'
-if USE_LOCKSMITH:
-    LOCKSMITH_SIGNING_KEY = envvar('LOCKSMITH_SIGNING_KEY')
 
 
 # settings we don't override
@@ -111,8 +107,8 @@ LOGGING = {
     },
     'loggers': {
         'django.request': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
+            'handlers': ['default'],
+            'level': 'ERROR',
             'propagate': True,
         },
         'boundaries': {
@@ -122,14 +118,6 @@ LOGGING = {
         },
     }
 }
-
-# locksmith stuff
-if USE_LOCKSMITH:
-    INSTALLED_APPS += ('locksmith.auth.apps.LocksmithAuthConfig',)
-    MIDDLEWARE_CLASSES += ('locksmith.auth.middleware.APIKeyMiddleware',)
-    LOCKSMITH_REGISTRATION_URL = 'http://sunlightfoundation.com/api/accounts/register/#ocd'
-    LOCKSMITH_HUB_URL = 'http://sunlightfoundation.com/api/analytics/'
-    LOCKSMITH_API_NAME = 'opencivicdata'
 
 BOUNDARIES_SHAPEFILES_DIR = 'shapefiles'
 IMAGO_COUNTRY = 'us'
@@ -178,6 +166,8 @@ IMAGO_BOUNDARY_MAPPINGS = {
                           'prefix': '',
                           'ignore': None,
                          },
+    'la-metro-supervisory-districts': {'key': 'placeholder_id',
+                          'prefix': '',
+                          'ignore': None,
+                         },
 }
-
-
