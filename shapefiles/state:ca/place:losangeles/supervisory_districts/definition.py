@@ -10,7 +10,7 @@ def ocd_id_func(feature):
 
 boundaries.register('la-metro-supervisory-districts',
     file='',
-    last_updated=date(2016, 11, 18),
+    last_updated=date(2016, 11, 22),
     name='LA Metro Supervisory Districts 2016',
     singular='LA Metro Supervisory District 2016',
     domain='Los Angeles County',
