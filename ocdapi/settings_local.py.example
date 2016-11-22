@@ -12,3 +12,9 @@ DATABASES = {'default': {
                  'PORT': '',
             }
 }
+
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+TEMPLATE_DEBUG = DEBUG

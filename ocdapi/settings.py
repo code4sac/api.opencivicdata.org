@@ -1,21 +1,7 @@
 import os
 import datetime
-import dj_database_url
 from django.core.exceptions import ImproperlyConfigured
-from .local_settings import *
-
-DEBUG = True
-
-def envvar(name, default=None):
-    result = os.environ.get(name, default)
-    if result is None:
-        raise ImproperlyConfigured('missing required environment variable ' + name)
-    return result
-
-# env variables
-ALLOWED_HOSTS = envvar('ALLOWED_HOSTS', '*').split(',')
-TEMPLATE_DEBUG = DEBUG = envvar('DJANGO_DEBUG', 'False').lower() == 'true'
-
+from .settings_local import *
 
 # settings we don't override
 #TIME_ZONE = 'America/New_York'
