@@ -1,9 +1,10 @@
 from datetime import date
+from django.utils.text import slugify
 
 import boundaries
 
 def format_name(name):
-    return name.lower().replace(" ", "_").replace("__", "_")
+    return slugify(name).replace('-', '_')
 
 def sector_namer(feature):
     sector_name = format_name(feature.get('Sector'))
