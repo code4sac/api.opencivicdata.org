@@ -4,7 +4,7 @@ from django.utils.text import slugify
 import boundaries
 
 def format_name(name):
-    return slugify(name).replace('-', '_')
+    return slugify(name).replace('-', '_').replace('_sector', '')
 
 def sector_namer(feature):
     sector_name = format_name(feature.get('Sector'))
@@ -12,7 +12,6 @@ def sector_namer(feature):
 
 def ocd_id_func(feature):
     sector_name = format_name(feature.get('Sector'))
-    print(sector_name)
     return 'ocd-division/country:us/state:ca/county:los_angeles/la_metro_sector:{0}'.format(sector_name)
 
 boundaries.register('la-metro-committee-districts',
