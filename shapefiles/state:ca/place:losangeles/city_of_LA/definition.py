@@ -7,7 +7,7 @@ def sector_namer(feature):
     return feature.get('CITY_NAME')
 
 def ocd_id_func(feature):
-    return 'ocd-division/country:us/state:ca/county:los_angeles'
+    return 'ocd-division/country:us/state:ca/place:los_angeles'
 
 boundaries.register('city-of-la',
     file='',
