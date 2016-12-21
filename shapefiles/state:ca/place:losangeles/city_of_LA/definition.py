@@ -4,12 +4,12 @@ from django.utils.text import slugify
 import boundaries
 
 def sector_namer(feature):
-    return 'city-of-{0}'.format(feature.get('CITY'))
+    return feature.get('CITY_NAME')
 
 def ocd_id_func(feature):
     return 'ocd-division/country:us/state:ca/county:los_angeles'
 
-boundaries.register('la-metro-committee-districts',
+boundaries.register('city-of-la',
     file='',
     last_updated=date(2016, 12, 21),
     name='City of Los Angeles',
