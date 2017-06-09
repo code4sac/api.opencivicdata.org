@@ -1,12 +1,11 @@
-from django.conf.urls import patterns, include
+from django.conf.urls import include, url
 from django.views.generic.base import RedirectView
 
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
-   ('', include('boundaries.urls')),
-   ('', include('imago.urls')),
-   # ('', include('locksmith.auth.urls')),
-   (r'^admin/', include(admin.site.urls)),
-)
+urlpatterns = [
+   url(r'', include('boundaries.urls')),
+   url(r'', include('imago.urls')),
+   url(r'^admin/', include(admin.site.urls)),
+]

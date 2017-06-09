@@ -5,7 +5,6 @@ django-appconf
 pyshp
 raven!=4.1
 dj-database-url
-opencivicdata-divisions
 DjangoRestless
 
 -e git+https://github.com/opencivicdata/imago@master#egg=imago

@@ -49,7 +49,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'boundaries',
-    'opencivicdata.apps.BaseConfig',
+    'opencivicdata.core.apps.BaseConfig',
+    'opencivicdata.legislative.apps.BaseConfig',
     'imago',
     'pupa',
 )
