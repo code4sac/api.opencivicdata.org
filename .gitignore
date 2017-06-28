@@ -28,5 +28,4 @@ ocdapi/settings_local.py/keyrings/live/pubring.gpg~
 /configs/ocd-api.conf.nginx
 /scripts/after_install.sh
 /scripts/app_start.sh
-/scripts/before_install.sh
 /scripts/app_stop.sh
