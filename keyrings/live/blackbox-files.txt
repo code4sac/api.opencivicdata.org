@@ -3,3 +3,4 @@ configs/api.opencivicdata.org.conf.supervisor
 configs/ocd-api.conf.nginx
 configs/ocd-api.conf.supervisor
 scripts/after_install.sh
+scripts/app_start.sh
