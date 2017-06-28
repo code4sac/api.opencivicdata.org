@@ -1,3 +1,4 @@
 configs/api.opencivicdata.org.conf.nginx
 configs/api.opencivicdata.org.conf.supervisor
+configs/ocd-api.conf.nginx
 configs/ocd-api.conf.supervisor
