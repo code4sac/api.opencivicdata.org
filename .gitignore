@@ -24,3 +24,9 @@ ocdapi/settings_local.py/keyrings/live/pubring.gpg~
 /keyrings/live/secring.gpg
 /configs/api.opencivicdata.org.conf.nginx
 /configs/api.opencivicdata.org.conf.supervisor
+/configs/ocd-api.conf.supervisor
+/configs/ocd-api.conf.nginx
+/scripts/after_install.sh
+/scripts/app_start.sh
+/scripts/before_install.sh
+/scripts/app_stop.sh
