@@ -1,2 +1,3 @@
 configs/ocd-api.conf.nginx
 configs/ocd-api-staging.conf.nginx
+scripts/after_install.sh
