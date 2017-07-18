@@ -10,14 +10,14 @@ dj-database-url
 DjangoRestless
 gunicorn
 
--e git+https://github.com/datamade/imago@master#egg=imago
+https://github.com/datamade/imago/zipball/master
 
--e git+https://github.com/datamade/pupa.git#egg=pupa
+https://github.com/datamade/pupa/zipball/master
 
 # represent-boundaries
--e git+https://github.com/opennorth/represent-boundaries.git#egg=boundaries
+https://github.com/opennorth/represent-boundaries/zipball/master
 
--e git+https://github.com/sunlightlabs/django-locksmith.git@python3#egg=django-locksmith
+https://github.com/sunlightlabs/django-locksmith/zipball/master
 
--e git+https://github.com/sunlightlabs/waterfall.git#egg=waterfall
+https://github.com/sunlightlabs/waterfall/zipball/master
 
