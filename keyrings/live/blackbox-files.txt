@@ -1,6 +1,7 @@
 configs/ocd-api.conf.nginx
 configs/ocd-api.conf.supervisor
 configs/ocd-api-staging.conf.nginx
+configs/settings_local.py
 scripts/after_install.sh
 scripts/app_start.sh
 scripts/app_stop.sh
