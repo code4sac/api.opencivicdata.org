@@ -8,6 +8,7 @@ pyshp
 raven==5.8.1
 dj-database-url
 DjangoRestless
+gunicorn
 
 -e git+https://github.com/datamade/imago@master#egg=imago
 
