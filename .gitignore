@@ -31,6 +31,5 @@ ocdapi/settings_local.py/keyrings/live/pubring.gpg~
 /scripts/app_stop.sh
 /keyrings/live/pubring.gpg~
 /configs/ocd-api-staging.conf.nginx
-/scripts/before_install.sh
 /scripts/validate_service.sh
 /configs/settings_local.py
