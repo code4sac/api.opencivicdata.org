@@ -1,3 +1,5 @@
+https://github.com/opencivicdata/python-opencivicdata/zipball/master
+
 Django==1.11.2
 psycopg2
 pyelasticsearch
@@ -9,7 +11,7 @@ DjangoRestless
 
 -e git+https://github.com/datamade/imago@master#egg=imago
 
--e git+https://github.com/opencivicdata/pupa.git#egg=pupa
+-e git+https://github.com/datamade/pupa.git#egg=pupa
 
 # represent-boundaries
 -e git+https://github.com/opennorth/represent-boundaries.git#egg=boundaries
@@ -17,3 +19,4 @@ DjangoRestless
 -e git+https://github.com/sunlightlabs/django-locksmith.git@python3#egg=django-locksmith
 
 -e git+https://github.com/sunlightlabs/waterfall.git#egg=waterfall
+
