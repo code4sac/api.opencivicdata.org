@@ -4,7 +4,7 @@ set -euo pipefail
 # Create a fresh project directory. (This is mainly
 # to ensure that these scripts work on a bare server.)
 rm -Rf /home/datamade/ocd-api
-mkdir -p /home/datamade/ocd-apib
+mkdir -p /home/datamade/ocd-api
 
 
 # Decrypt files encrypted with blackbox
