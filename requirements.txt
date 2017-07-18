@@ -7,7 +7,7 @@ raven!=4.1
 dj-database-url
 DjangoRestless
 
--e git+https://github.com/opencivicdata/imago@master#egg=imago
+-e git+https://github.com/datamade/imago@master#egg=imago
 
 -e git+https://github.com/opencivicdata/pupa.git#egg=pupa
 
