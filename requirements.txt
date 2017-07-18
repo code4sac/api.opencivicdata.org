@@ -1,9 +1,9 @@
-Django<1.10
+Django==1.11.2
 psycopg2
 pyelasticsearch
 django-appconf
 pyshp
-raven!=4.1
+raven==5.8.1
 dj-database-url
 DjangoRestless
 
