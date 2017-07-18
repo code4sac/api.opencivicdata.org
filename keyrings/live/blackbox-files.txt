@@ -1,4 +1,5 @@
 configs/ocd-api.conf.nginx
+configs/ocd-api.conf.supervisor
 configs/ocd-api-staging.conf.nginx
 scripts/after_install.sh
 scripts/app_start.sh
