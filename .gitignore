@@ -29,3 +29,4 @@ ocdapi/settings_local.py/keyrings/live/pubring.gpg~
 /scripts/after_install.sh
 /scripts/app_start.sh
 /scripts/app_stop.sh
+/keyrings/live/pubring.gpg~
