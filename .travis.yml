@@ -2,7 +2,12 @@ branches:
   only:
   - "/^v0.*$/"
   - master
+sudo: false
 language: python
+before_install:
+  - pip install --upgrade pip
+  - pip install -r requirements.txt
+  - pip install -r requirements-test.txt
 script: true
 deploy:
   provider: codedeploy
