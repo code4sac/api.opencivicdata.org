@@ -3,6 +3,7 @@ branches:
   - "/^v0.*$/"
   - master
 language: python
+script: true
 deploy:
   provider: codedeploy
   access_key_id: AKIAJNYGDLOJKHOUWCAA
