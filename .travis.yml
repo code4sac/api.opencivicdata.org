@@ -1,0 +1,14 @@
+branches:
+  only:
+  - "/^v0.*$/"
+  - master
+language: python
+deploy:
+  provider: codedeploy
+  access_key_id: AKIAJNYGDLOJKHOUWCAA
+  secret_access_key:
+    secure: bRfRNhUCpNFm1OrylBwDSmS1chqermsGEBdmZcmRmzPbW/KTbfkqxZTwm2Wb1GqGHzMxy3Wtiux1T7TKFJ5vmWpHuUpG+jVj2ucw2l2hcLDzByV+x2ocMpvaSZ0nH/3V8vYvGwexewt1uhNftaX3Wxu5ENWE6SPyr3ZLqSPJlLvjvbqVSc3zxwPx/8aBOX1MhPW5jCBTzGX+VfEYvL5xUGMmCevqlWFemi065R8uDgBRnjOHBWgQYV2mhAb4hnhG6PYORnW9ivYucSnCJaObXo28DonVZz9US5VR7WOKAW8lUJTMTx/5Sw1FWvqlIFgFm1/2tw61oEvfgEqYGJDNfqXELTA1NXc1pwUaqU0tcKIPTd/HoFxEAcX/hbWA9J1tddlmwgNSsf7AIR9jg6d2x++2ZnY4crQGgDE8P8VRJTu+XBrFORyGrpTsmXVTTQButLCAf5/xcaVL0uRtpb7lJA+3i6wJnOMPuFx/QqYIXarPagO/T48q0TCqHEQhIQMTGFCq62KKtjSn1vNRFTUA+UcQ2XPN4nV/pkNyIITdS4qxGJDC+JZ2lpHCTnaHC9rxSVfxeKZDfrurkpBtunJFhK9ARrEN8PkzKKnemxGqGy/bOBRtiIJmsLh3JOVx0KqgsQhyza9z0gvbac5ioXlHJi8AVjvwXFz39J532UBMQhI=
+  application: ocd-api
+  deployment_group: staging
+  on:
+    repo: datamade/api.opencivicdata.org
