@@ -1,6 +1,7 @@
 https://github.com/opencivicdata/python-opencivicdata/zipball/master
+https://github.com/opencivicdata/pupa/zipball/master
 
-Django==1.11.2
+Django==1.11.3
 psycopg2
 pyelasticsearch
 django-appconf
@@ -12,7 +13,6 @@ gunicorn
 
 https://github.com/datamade/imago/zipball/master
 
-https://github.com/datamade/pupa/zipball/master
 
 # represent-boundaries
 https://github.com/opennorth/represent-boundaries/zipball/master
