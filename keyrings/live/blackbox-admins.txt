@@ -1,3 +1,4 @@
+evz@datamade.us
 fgregg@uchicago.edu
 ocd-api@datamade.us
 ocd-api-stagin@datamade.us
