@@ -18,22 +18,22 @@ class Migration(migrations.Migration):
 
         nyc_bills = Bill.objects.filter(from_organization__jurisdiction__id='ocd-jurisdiction/country:us/state:ny/place:new_york/government')
 
-        deleted_zeroes = r'^([A-Za-z]*\s)(\d{1,3})(-\d{4})$'
+        deleted_zeroes = r'^([A-Za-z]*\s)(\d{1,3})(-[\d]*)$'
         for bill in nyc_bills.filter(identifier__iregex=deleted_zeroes):
-            pattern = re.compile(deleted_zeroes)
-            unmangled_identifier = pattern.sub(lambda match: match.group(1) + '{:0>4}'.format(match.group(2)) + match.group(3), bill.identifier)
-
+            match = re.match(deleted_zeroes, bill.identifier)
+            unmangled_identifier = '{prefix}{mangled_count:0>4}{remainder}'.format(prefix=match.group(1), 
+                                                                                   mangled_count=match.group(2),
+                                                                                   remainder=match.group(3)
+                                                                                   )
             bill.identifier = unmangled_identifier
             bill.save()
 
-        added_space = r'^([T]*\s)(\d{1,4}-\d{1,4})$'
+        added_space = r'^([T]*\s)([\d]*-[\d]*)$'
         for bill in nyc_bills.filter(identifier__iregex=added_space):
-            print("***")
-            print(bill.identifier)
-            pattern = re.compile(added_space)
-            unmangled_identifier = pattern.sub(lambda match: match.group(1).rstrip() + match.group(2), bill.identifier)
-
-            print(unmangled_identifier)
+            match = re.match(added_space, bill.identifier)
+            unmangled_identifier = '{mangled_prefix}{count}'.format(mangled_prefix=match.group(1).rstrip(), 
+                                                                    count=match.group(2)
+                                                                    )
             bill.identifier = unmangled_identifier
             bill.save()
 
