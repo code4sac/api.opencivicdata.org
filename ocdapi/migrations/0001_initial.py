@@ -9,29 +9,35 @@ from opencivicdata.legislative.models import Bill
 class Migration(migrations.Migration):
     def unmangle_identifier(apps, schema_editor):
         '''
-        The `fix_bill_id` function mangled NYC Bills in at least two ways:
+        The `fix_bill_id` function mangled NYC bill identifiers in at least two ways:
         (1) removing zeroes, e.g., 'Res 0229-2004' (original) becomes 'Res 229-2004' (mangled)
         (2) adding a space, e.g., 'T2018-1245' (original) becomes 'T 2018-1245' (mangled).
 
-        Note: the second case ONLY affected bills that begin with 'T', and the first case did NOT affect bills that begin with 'T' - that is, NYC bills never follow these patterns 'T 0023-2015' or 'T0023-2015'.
+        Note: the second case ONLY affected NYC bills that begin with 'T', and the first case did NOT affect bills that begin with 'T' - that is, NYC bills never follow these patterns 'T 0023-2015' or 'T0023-2015'.
+
+        This migration unmangles identifiers. 
         '''
 
         nyc_bills = Bill.objects.filter(from_organization__jurisdiction__id='ocd-jurisdiction/country:us/state:ny/place:new_york/government')
 
+        # First case
         deleted_zeroes = r'^((?!T\s)[A-Za-z]+)\s(\d{1,3})-(\d+)$'
         for bill in nyc_bills.filter(identifier__iregex=deleted_zeroes):
             match = re.match(deleted_zeroes, bill.identifier)
             unmangled_identifier = '{prefix} {mangled_count:0>4}-{remainder}'.format(prefix=match.group(1), 
                                                                                      mangled_count=match.group(2),
                                                                                      remainder=match.group(3))
+
             bill.identifier = unmangled_identifier
             bill.save()
 
+        # Second case
         added_space = r'^(T)\s([-\d]+)$'
         for bill in nyc_bills.filter(identifier__iregex=added_space):
             match = re.match(added_space, bill.identifier)
             unmangled_identifier = '{mangled_prefix}{count}'.format(mangled_prefix=match.group(1), 
                                                                     count=match.group(2))
+
             bill.identifier = unmangled_identifier
             bill.save()
 
