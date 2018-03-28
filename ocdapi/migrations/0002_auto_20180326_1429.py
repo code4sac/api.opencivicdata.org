@@ -22,6 +22,12 @@ class Migration(migrations.Migration):
             unmangled_identifier = '{mangled_prefix}{count}'.format(mangled_prefix=match.group(1), 
                                                                     count=match.group(2))
 
+            try:
+                duplicate = Bill.objects.get(identifier=unmangled_identifier)
+                duplicate.delete()
+            except Bill.DoesNotExist: 
+                pass
+
             bill.identifier = unmangled_identifier
             bill.save()
 
@@ -30,4 +36,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
+        migrations.RunPython(unmangle_identifier)
     ]

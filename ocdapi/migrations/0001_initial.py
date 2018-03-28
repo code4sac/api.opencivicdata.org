@@ -15,7 +15,11 @@ class Migration(migrations.Migration):
 
         Note: the second case ONLY affected NYC bills that begin with 'T', and the first case did NOT affect bills that begin with 'T' - that is, NYC bills never follow these patterns 'T 0023-2015' or 'T0023-2015'.
 
-        This migration unmangles identifiers. 
+        This migration unmangles identifiers.
+
+        Note: we very briefly ran the scrapers with the new version of Pupa - https://github.com/opencivicdata/scrapers-us-municipal/pull/201
+        For this reason, the opencivicdata database has some duplicate bills with unmangled identifiers. 
+        This mirgration deletes those duplicates. 
         '''
 
         nyc_bills = Bill.objects.filter(from_organization__jurisdiction__id='ocd-jurisdiction/country:us/state:ny/place:new_york/government')
@@ -28,15 +32,29 @@ class Migration(migrations.Migration):
                                                                                      mangled_count=match.group(2),
                                                                                      remainder=match.group(3))
 
+            try:
+                duplicate = Bill.objects.get(identifier=unmangled_identifier)
+                duplicate.delete()
+            except Bill.DoesNotExist: 
+                pass
+
             bill.identifier = unmangled_identifier
             bill.save()
 
         # Second case
         added_space = r'^(T)\s([-\d]+)$'
         for bill in nyc_bills.filter(identifier__iregex=added_space):
+            print(bill.identifier)
             match = re.match(added_space, bill.identifier)
             unmangled_identifier = '{mangled_prefix}{count}'.format(mangled_prefix=match.group(1), 
                                                                     count=match.group(2))
+
+            try:
+                print(unmangled_identifier)
+                duplicate = Bill.objects.get(identifier=unmangled_identifier)
+                duplicate.delete()
+            except Bill.DoesNotExist: 
+                pass
 
             bill.identifier = unmangled_identifier
             bill.save()
