@@ -9,7 +9,7 @@ from opencivicdata.legislative.models import Bill
 class Migration(migrations.Migration):
     def unmangle_identifier(apps, schema_editor):
         '''
-        The `fix_bill_id` function mangled nearly all Chicago bill identifiers by adding a space, e.g., 'R2010-1185' (original) becomes 'R 2010-1185' (mangled).
+        The `fix_bill_id` function mangled nearly all Chicago bill identifiers by adding a space, e.g., 'R2010-1185' (original) vs. 'R 2010-1185' (mangled).
 
         This migration unmangles identifiers. 
         '''

@@ -10,8 +10,8 @@ class Migration(migrations.Migration):
     def unmangle_identifier(apps, schema_editor):
         '''
         The `fix_bill_id` function mangled NYC bill identifiers in at least two ways:
-        (1) removing zeroes, e.g., 'Res 0229-2004' (original) becomes 'Res 229-2004' (mangled)
-        (2) adding a space, e.g., 'T2018-1245' (original) becomes 'T 2018-1245' (mangled).
+        (1) removing zeroes, e.g., 'Res 0229-2004' (original) vs. 'Res 229-2004' (mangled), or 'Int 0291-1998-A' (original) vs. 'Int 291-1998-A' (mangled)
+        (2) adding a space, e.g., 'T2018-1245' (original) vs. 'T 2018-1245' (mangled).
 
         Note: the second case ONLY affected NYC bills that begin with 'T', and the first case did NOT affect bills that begin with 'T' - that is, NYC bills never follow these patterns 'T 0023-2015' or 'T0023-2015'.
 
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
         nyc_bills = Bill.objects.filter(from_organization__jurisdiction__id='ocd-jurisdiction/country:us/state:ny/place:new_york/government')
 
         # First case
-        deleted_zeroes = r'^((?!T\s)[A-Za-z]+)\s(\d{1,3})-(\d+)$'
+        deleted_zeroes = r'^((?!T\s)[A-Za-z]+)\s(\d{1,3})-([-\w]+)$'
         for bill in nyc_bills.filter(identifier__iregex=deleted_zeroes):
             match = re.match(deleted_zeroes, bill.identifier)
             unmangled_identifier = '{prefix} {mangled_count:0>4}-{remainder}'.format(prefix=match.group(1), 
