@@ -14,6 +14,8 @@ class Migration(migrations.Migration):
         This migration unmangles identifiers. 
         '''
 
+        print('Running CHICAGO MIGRATION')
+
         chicago_bills = Bill.objects.filter(from_organization__jurisdiction__id='ocd-jurisdiction/country:us/state:il/place:chicago/government')
 
         added_space = r'^([A-Za-z]+)\s([-\d]+)$'
@@ -22,8 +24,10 @@ class Migration(migrations.Migration):
             unmangled_identifier = '{mangled_prefix}{count}'.format(mangled_prefix=match.group(1), 
                                                                     count=match.group(2))
 
+            print('{} becomes {}'.format(bill.identifier, unmangled_identifier))
             try:
                 duplicate = Bill.objects.get(identifier=unmangled_identifier)
+                print('{} - duplicate found. Deleting.'.format(unmangled_identifier))
                 duplicate.delete()
             except Bill.DoesNotExist: 
                 pass

@@ -32,8 +32,10 @@ class Migration(migrations.Migration):
                                                                                      mangled_count=match.group(2),
                                                                                      remainder=match.group(3))
 
+            print('{} becomes {}'.format(bill.identifier, unmangled_identifier))
             try:
                 duplicate = Bill.objects.get(identifier=unmangled_identifier)
+                print('{unmangled_identifier} - a duplicate!')
                 duplicate.delete()
             except Bill.DoesNotExist: 
                 pass
@@ -44,14 +46,14 @@ class Migration(migrations.Migration):
         # Second case
         added_space = r'^(T)\s([-\d]+)$'
         for bill in nyc_bills.filter(identifier__iregex=added_space):
-            print(bill.identifier)
             match = re.match(added_space, bill.identifier)
             unmangled_identifier = '{mangled_prefix}{count}'.format(mangled_prefix=match.group(1), 
                                                                     count=match.group(2))
 
+            print('{} becomes {}'.format(bill.identifier, unmangled_identifier))
             try:
-                print(unmangled_identifier)
                 duplicate = Bill.objects.get(identifier=unmangled_identifier)
+                print('{} - duplicate found. Deleting.'.format(unmangled_identifier))
                 duplicate.delete()
             except Bill.DoesNotExist: 
                 pass
