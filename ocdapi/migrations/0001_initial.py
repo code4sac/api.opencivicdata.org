@@ -35,7 +35,7 @@ class Migration(migrations.Migration):
             print('{} becomes {}'.format(bill.identifier, unmangled_identifier))
             try:
                 duplicate = Bill.objects.get(identifier=unmangled_identifier)
-                print('{unmangled_identifier} - a duplicate!')
+                print('{} - duplicate found. Deleting.'.format(unmangled_identifier))
                 duplicate.delete()
             except Bill.DoesNotExist: 
                 pass
