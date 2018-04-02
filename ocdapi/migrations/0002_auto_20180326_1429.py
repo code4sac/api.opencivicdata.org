@@ -4,6 +4,8 @@ from __future__ import unicode_literals
 import re
 
 from django.db import migrations
+from django.db import connection, transaction
+
 from opencivicdata.legislative.models import Bill
 
 class Migration(migrations.Migration):
@@ -18,23 +20,38 @@ class Migration(migrations.Migration):
 
         added_space = r'^([A-Za-z]+)\s([-\d]+)$'
 
-        chicago_bills = Bill.objects.filter(from_organization__jurisdiction__id='ocd-jurisdiction/country:us/state:il/place:chicago/government').filter(identifier__iregex=added_space)
+        with transaction.atomic(), connection.cursor() as cursor:
+            cursor.execute("""
+                DECLARE bills_cursor CURSOR FOR
+                SELECT identifier FROM opencivicdata_bill as bill
+                INNER JOIN opencivicdata_organization as organization
+                ON bill.from_organization_id=organization.id 
+                WHERE organization.jurisdiction_id='ocd-jurisdiction/country:us/state:il/place:chicago/government' 
+                AND bill.identifier ~* '(^([A-Za-z]+)\s([-\d]+)$)'
+            """)
 
-        for bill in chicago_bills:
-            match = re.match(added_space, bill.identifier)
-            unmangled_identifier = '{mangled_prefix}{count}'.format(mangled_prefix=match.group(1), 
-                                                                    count=match.group(2))
+            while True:
+                cursor.execute("FETCH 2 FROM bills_cursor")
+                bill_chunk = cursor.fetchall()
 
-            print('{} becomes {}'.format(bill.identifier, unmangled_identifier))
-            try:
-                duplicate = Bill.objects.get(identifier=unmangled_identifier)
-                print('{} - duplicate found. Deleting.'.format(unmangled_identifier))
-                duplicate.delete()
-            except Bill.DoesNotExist: 
-                pass
+                if not bill_chunk:
+                    break
+                else: 
+                    for bill in bill_chunk:
+                        identifier = bill[0]
+                        match = re.match(added_space, identifier)
+                        unmangled_identifier = '{mangled_prefix}{count}'.format(mangled_prefix=match.group(1), 
+                                                                                count=match.group(2))
 
-            bill.identifier = unmangled_identifier
-            bill.save()
+                        print('{} becomes {}'.format(identifier, unmangled_identifier))
+                        try:
+                            duplicate = Bill.objects.get(identifier=unmangled_identifier)
+                            print('{} - duplicate found. Deleting.'.format(unmangled_identifier))
+                            duplicate.delete()
+                        except Bill.DoesNotExist: 
+                            pass
+
+                        Bill.objects.filter(identifier=identifier).update(identifier=unmangled_identifier)
 
     dependencies = [
         ('ocdapi', '0001_initial'),
