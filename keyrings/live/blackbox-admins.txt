@@ -1,3 +1,4 @@
+deployer@civicpro.datamade.us
 evz@datamade.us
 fgregg@uchicago.edu
 ocd-api@datamade.us
