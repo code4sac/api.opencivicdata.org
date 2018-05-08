@@ -53,6 +53,7 @@ INSTALLED_APPS = (
     'opencivicdata.legislative.apps.BaseConfig',
     'imago',
     'pupa',
+    'ocdapi',
 )
 if RAVEN_DSN:
     INSTALLED_APPS += ('raven.contrib.django.raven_compat',)

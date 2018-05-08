@@ -19,7 +19,8 @@ shapefiles/place-13/
 ocdapi/settings/local.py
 ocdapi/settings/production.py
 hosts.production
-ocdapi/settings_local.py/keyrings/live/pubring.gpg~
+ocdapi/settings_local.py
+/keyrings/live/pubring.gpg~
 /keyrings/live/pubring.kbx~
 /keyrings/live/secring.gpg
 /configs/api.opencivicdata.org.conf.nginx
