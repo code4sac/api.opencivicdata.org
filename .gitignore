@@ -34,3 +34,4 @@ ocdapi/settings_local.py
 /configs/ocd-api-staging.conf.nginx
 /scripts/validate_service.sh
 /configs/settings_local.py
+/configs/civicpro-staging.conf.nginx
