@@ -11,7 +11,7 @@ dj-database-url
 DjangoRestless
 gunicorn
 
--e git://github.com/datamade/imago.git@b2e87310554d3b4712d80bba94191234122fca1f#egg=imago
+-e git://github.com/datamade/imago.git@ee45d2087d8af6e450e5c1f50f612a535dd9196c#egg=imago
 
 # represent-boundaries
 https://github.com/opennorth/represent-boundaries/zipball/master
