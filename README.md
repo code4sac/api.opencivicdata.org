@@ -19,6 +19,24 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+Alternatively, you can add the database connection information to
+`ocdapi/settings_local.py`:
+
+```
+cp ocdapi/settings_local.py.example ocdapi/settings_local.py
+```
+
+Then you'll need to edit `ocdapi/settings_local.py` to contain the so that it
+contains the correct connection information
+
+To run the app:
+
+```
+workon ocdapi
+cd <directory where you cloned the repo>
+python manage.py runserver
+```
+
 What is this?
 -------------
 
