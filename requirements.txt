@@ -2,7 +2,7 @@ https://github.com/opencivicdata/python-opencivicdata/zipball/master
 https://github.com/opencivicdata/pupa/zipball/master
 
 Django==1.11.3
-psycopg2
+psycopg2-binary
 pyelasticsearch
 django-appconf
 pyshp
@@ -11,7 +11,7 @@ dj-database-url
 DjangoRestless
 gunicorn
 
--e git://github.com/datamade/imago.git@ee45d2087d8af6e450e5c1f50f612a535dd9196c#egg=imago
+https://github.com/datamade/imago/archive/master.zip
 
 # represent-boundaries
 https://github.com/opennorth/represent-boundaries/zipball/master
