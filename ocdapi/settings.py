@@ -55,9 +55,9 @@ INSTALLED_APPS = (
     'pupa',
     'ocdapi',
 )
-if RAVEN_DSN:
-    INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
-    RAVEN_CONFIG = {'dsn': RAVEN_DSN}
+# if RAVEN_DSN:
+#     INSTALLED_APPS += ('raven.contrib.django.raven_compat',)
+#     RAVEN_CONFIG = {'dsn': RAVEN_DSN}
 
 
 LOGGING = {
